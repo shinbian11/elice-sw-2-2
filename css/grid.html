@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 20px solid red;
+        margin: 10px;
+      }
+      #container {
+        display: grid;
+        grid-template-columns: 1fr 70px 1fr; /* 가운데 것은 100px로, 왼/오른쪽 것은 1대1의 비율로*/
+        /* grid-template-columns: 1fr 1fr 1fr; */
+      }
+    </style>
+  </head>
+  <body>
+    <div>TOP</div>
+    <div id="container">
+      <div>LEFT</div>
+      <div>CENTER</div>
+      <div>RIGHT</div>
+    </div>
+    <div>BOTTOM</div>
+  </body>
+</html>
