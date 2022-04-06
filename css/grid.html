@@ -5,23 +5,24 @@
     <title>Document</title>
     <style>
       div {
-        border: 20px solid red;
-        margin: 10px;
+        border: 1px solid red;
+        /* margin: 10px; */
       }
       #container {
         display: grid;
-        grid-template-columns: 1fr 70px 1fr; /* 가운데 것은 100px로, 왼/오른쪽 것은 1대1의 비율로*/
-        /* grid-template-columns: 1fr 1fr 1fr; */
+        grid-template-columns: 1fr 100px 1fr; /* 가운데 것은 100px로, 왼/오른쪽 것은 1대1의 비율로*/
+        /* grid-template-columns: 1fr 1fr 1fr; */ /* 3개 모두 비율을 1 : 1 : 1*/
       }
     </style>
   </head>
   <body>
-    <div>TOP</div>
     <div id="container">
+      <!-- 왼쪽 것-->
       <div>LEFT</div>
+      <!-- 가운데 것-->
       <div>CENTER</div>
+      <!-- 오른쪽 것-->
       <div>RIGHT</div>
     </div>
-    <div>BOTTOM</div>
   </body>
 </html>
