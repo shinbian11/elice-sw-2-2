@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- 
+        <Javascript를 입력하는 경우 3가지>
+
+        1. 개발자 도구의 콘솔 창
+        2. html 파일의 script tag 내
+        3. html 파일의 onclick 속성 내 
+    -->
+    <h1>Script tag</h1>
+    <script>
+      document.write(1 + 1);
+    </script>
+    <h1>Event</h1>
+    <input
+      type="button"
+      value="hi"
+      onclick="speechSynthesis.speak(new SpeechSynthesisUtterance('꼭이요!'));alert('hi!')"
+    />
+  </body>
+</html>
