@@ -44,8 +44,20 @@
   </head>
 
   <body>
+    <!-- button 태그와 input type button 은 사실상 같은 역할이다! 또한 input type button 에서 text는 value 내에 적으면 됨 -->
+    <input
+      type="button"
+      value="night"
+      onclick="document.querySelector('body').style.backgroundColor = 'black';
+    document.querySelector('body').style.color = 'white'; "
+    />
+    <input
+      type="button"
+      value="day"
+      onclick="document.querySelector('body').style.backgroundColor = 'white';
+    document.querySelector('body').style.color = 'black'; "
+    />
     <h1><a href="index.html">WEB</a></h1>
-
     <div id="container">
       <ol>
         <li><a href="1.html">html</a></li>
