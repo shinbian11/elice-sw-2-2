@@ -1,0 +1,64 @@
+<html>
+  <body>
+    JavaScript is
+    <span
+      style="
+        display: inline;
+        background-color: rgb(215, 215, 215);
+        padding: 0px 5px;
+        cursor: pointer;
+      "
+      onclick="this.style.display = 'none'; document.querySelector('#article').style.display = 'inline';"
+    >
+      ...
+    </span>
+    <span id="article" style="display: none">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed libero
+      dignissimos, neque provident commodi non quod beatae optio accusantium
+      illo, ab aliquam maiores quasi quidem error quos? Deleniti hic harum amet
+      aut iure saepe et sapiente nisi ipsam, reprehenderit tenetur maiores
+      provident totam incidunt non, commodi tempora dolorum. Sapiente, dicta!
+    </span>
+    <hr />
+
+    JavaScript is
+    <span
+      style="
+        display: inline;
+        background-color: rgb(215, 215, 215);
+        padding: 0px 5px;
+        cursor: pointer;
+      "
+      onclick="
+      this.style.display = 'none'; 
+      document.querySelector('#content').style.display = 'inline';
+      document.querySelector('#content').innerHTML = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed libero
+      dignissimos, neque provident commodi non quod <u>beatae</u> optio accusantium
+      illo, ab aliquam maiores quasi quidem error quos? Deleniti hic harum amet
+      aut iure saepe et sapiente nisi ipsam, reprehenderit tenetur maiores
+      provident totam incidunt non, commodi tempora dolorum. Sapiente, dicta!`;"
+    >
+      ...
+    </span>
+    <span id="content" style="display: none"></span>
+
+    <!-- 
+        <innerHTML, innerText 차이>
+
+
+        <span id="content"><u>abcd</u></span> 
+
+        와 같은 tag가 있을 때..
+
+        <가져오기>
+        document.querySelector('#content').innerHTML 하면 => '<u>abcd</u>' 가 출력됨
+        document.querySelector('#content').innerText 하면 => 'abcd' 가 출력됨
+
+        <저장하기>
+
+        document.querySelector('#content').innerText = '<u>fff</u>' 하면 => u tag를 하나의 text로 받아들인다! <u>fff</u> 가 화면에 출력
+
+        document.querySelector('#content').innerHTML = '<u>fff</u>' 하면 => u tag를 tag로 받아들인다! fff에 underline 효과가 적용되어 화면에 출력
+    -->
+  </body>
+</html>
