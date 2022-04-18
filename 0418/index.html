@@ -1,80 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
     <title>WEB - Welcome!</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module">
+      import { dayNight, day } from "./daynight.js";
 
-    <style>
-      h1 {
-        border-bottom: 10px solid green;
-        padding: 15px;
-        margin-bottom: 0;
-      }
-      h1 a {
-        text-decoration: none;
-      }
-
-      @media all and (min-width: 480px) {
-        #container {
-          display: grid;
-          grid-template-columns: 1fr 1fr; /* ol 태그는 150 px, div 태그는 나머지 width 모두 차지 */
-        }
-        ol {
-          margin-top: 0;
-          border-right: 10px solid pink;
+      function listener(evt) {
+        // addEventListener + event.target 객체를 통해 이벤트 발생
+        if (evt.target.value === "night") {
+          dayNight("night");
+          evt.target.value = "day";
+        } else {
+          dayNight("day");
+          evt.target.value = "night";
         }
       }
-    </style>
-
-    <script>
-      function dayNight(mode) {
-        if (mode === "night") {
-          // document.querySelector('body').style.backgroundColor = 'black';
-          // document.querySelector('body').style.color = 'white';
-
-          // $("body").css("background-color", "black");
-          // $("body").css("color", "white");
-          $("body").css("background-color", "black").css("color", "white");
-          // let as = document.querySelectorAll("a");
-          // for (let i = 0; i < as.length; i++) {
-          //   as[i].style.color = "white";
-
-          $("a").css("color", "white");
-        } else if (mode === "day") {
-          document.querySelector("body").style.backgroundColor = "white";
-          document.querySelector("body").style.color = "black";
-          let as = document.querySelectorAll("a");
-          for (let i = 0; i < as.length; i++) {
-            as[i].style.color = "black";
-          }
-        }
-      }
+      document
+        .querySelector("#dayNightBtn")
+        .addEventListener("click", listener);
     </script>
   </head>
 
   <body>
-    <div id="target">toggle</div>
-    <input type="button" value = "hide/show" onclick="$('#target').toggle();">  
-    <input
-      type="button"
-      value="night"
-      onclick="
-      if(this.value ==='night' ) {
-        dayNight(this.value);
-       
-        this.value = 'day';
-      }
-      else {
-        dayNight(this.value);
-        
-        this.value = 'night';
-      }"
-    />
+    <input id="dayNightBtn" type="button" value="night" />
 
     <h1><a href="index.html">WEB</a></h1>
     <div id="container">
@@ -88,10 +38,5 @@
         Hello, WEB!!
       </div>
     </div>
-    <script>
-      let i = 30;
-      // console.log(i === 30); // true (Boolean 형태의 true)
-      // if (i == "30") console.log("true"); // true (String 형태의 true)
-    </script>
   </body>
 </html>

@@ -1,0 +1,20 @@
+h1 {
+  border-bottom: 10px solid green;
+  padding: 15px;
+  margin-bottom: 0;
+}
+h1 a {
+  text-decoration: none;
+}
+
+/* width가 480px보다 클때만 적용할 css (width 가 0~480px))*/
+@media all and (min-width: 480px) {
+  #container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ol 태그는 150 px, div 태그는 나머지 width 모두 차지 */
+  }
+  ol {
+    margin-top: 0;
+    border-right: 10px solid pink;
+  }
+}
