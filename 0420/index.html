@@ -41,6 +41,7 @@
         { id: 2, title: "css", body: "css is ..." },
         { id: 3, title: "js", body: "js is ..." },
       ];
+      let nextId = 4; // 다음 추가할 topics 데이터 객체의 id
       let selectedId = null;
       function navHandler(e) {
         // 1. 링크가 작동하지 않아야 한다.
@@ -50,6 +51,8 @@
         read();
         control();
       }
+
+      // nav() : topics의 전체 데이터들을 보여줌
       function nav() {
         const tag = topics
           .map(
@@ -68,6 +71,8 @@
           "article"
         ).innerHTML = `<h2>Welcome</h2>Hello, WEB`;
       }
+
+      // read() : 클릭한 topics 데이터에 해당하는 상세보기 내용을 보여줌
       function read() {
         // 3. 아이디와 일치하는 topics의 원소를 찾는다.
         const topic = topics.filter((e) => e.id === selectedId)[0]; // [0]번째를 가져와야 한다는 점을 주의하기
@@ -78,23 +83,43 @@
         // 5. 본문을 출력한다.
         document.querySelector("article").innerHTML = content;
       }
+      function createHandler(e) {
+        // <p><input type="submit" value="create"></p> 을 눌렀을 때 동작 과정
+        // form 태그에 onsubmit 함수 (createHandler가 trigger 된다.
+
+        e.preventDefault(); // form 태그의 기본 동작인 '다른 페이지로 이동하는 작업' 을 막기
+        const t = e.target.title.value; // 중요!) e.target : form 태그 전체, e.target.title.value : form 태그의 name 속성 값이 title인 요소의 value
+        const b = e.target.body.value; // 중요!) e.target : form 태그 전체, e.target.body.value : form 태그의 name 속성 값이 body인 요소의 value
+
+        const newTopic = { id: nextId, title: t, body: b };
+
+        // 1. topics에 새로운 원자가 추가된다.
+        topics.push(newTopic);
+
+        // 2. navigation을 refresh한다. - nav() 호출
+        nav();
+        selectedId = nextId; // selectedId가 최신 값으로 갱신되어야 read()가 정상적으로 동작함
+        nextId++;
+
+        // 3. 방금 생성된 글의 상세 보기로 이동한다. - read()가 호출
+        read();
+      }
       function create() {
         const content = `
-                          <form onsubmit="alert(title1.value); alert(body1.value);">
-                            <p><input type="text" name="title1" placeholder="제목"></p>
-                            <p><textarea name="body1" placeholder="본문"></textarea></p>
+                          <form onsubmit="createHandler(event);">
+                            <p><input type="text" name="title" placeholder="제목"></p>
+                            <p><textarea name="body" placeholder="본문"></textarea></p>
                             <p><input type="submit" value="create"></p>
                           </form>
                       `;
-        // <p><input type="submit" value="create"></p> 을 눌렀을 때 동작 과정
-        // 0. form 태그에 onsubmit 함수가 trigger 된다.
-        // 1. topics에 새로운 원자가 추가된다.
-        // 2. navigation을 refresh한다. - 내부함수 호출
-        // 3. 방금 생성된 글의 상세 보기로 이동한다. - read가 호출
+
         document.querySelector("article").innerHTML = content;
       }
+
       function update() {}
       function del() {}
+
+      // control() : topics 데이터를 클릭했을 때에만, Update & Delete 버튼을 추가해서 보여줌
       function control() {
         let contextUI = "";
         if (selectedId !== null) {
@@ -109,6 +134,8 @@
               ${contextUI}
                       `;
       }
+
+      // 기본적으로 창이 새로고침 되었을 때 실행할 함수들
       nav();
       welcome();
       control();
